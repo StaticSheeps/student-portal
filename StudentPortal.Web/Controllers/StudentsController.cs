@@ -31,7 +31,6 @@ namespace StudentPortal.Web.Controllers
             _db.Students.Add(student);
             _db.SaveChanges();
             return RedirectToAction("List");
-
         }
 
         public IActionResult Edit(int studentId)
