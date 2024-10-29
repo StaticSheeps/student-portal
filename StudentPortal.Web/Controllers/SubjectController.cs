@@ -11,6 +11,11 @@ namespace StudentPortal.Web.Controllers
         {
             _db = db;
         }
+        public IActionResult ListSubject()
+        {
+            List<Subject> objSubjectList = _db.Subjects.ToList();
+            return View(objSubjectList);
+        }
 
         [HttpGet]
         public IActionResult AddSubject()
@@ -23,7 +28,7 @@ namespace StudentPortal.Web.Controllers
         {
             _db.Subjects.Add(subject);
             _db.SaveChanges();
-            return RedirectToAction("List");
+            return RedirectToAction("ListSubject");
 
         }
     }

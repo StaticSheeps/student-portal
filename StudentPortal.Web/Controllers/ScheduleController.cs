@@ -11,6 +11,11 @@ namespace StudentPortal.Web.Controllers
         {
             _db = db;
         }
+        public IActionResult ListSchedule()
+        {
+            List<Schedule> objScheduleList = _db.Schedules.ToList();
+            return View(objScheduleList);
+        }
 
         [HttpGet]
         public IActionResult AddSchedule()
@@ -22,7 +27,7 @@ namespace StudentPortal.Web.Controllers
         {
             _db.Schedules.Add(schedule);
             _db.SaveChanges();
-            return RedirectToAction("List");
+            return RedirectToAction("ListSchedule");
 
         }
     }

@@ -1,0 +1,71 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model IEnumerable<StudentPortal.Web.Models.Entities.Subject>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="w-100 card border-0 p-4">
+    <div class="card-header bg-primary bg-gradient ml-0 py-2">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white py-1">Student List</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body border p-4">
+        <div class="row pb-3">
+            <div class="col-6 offset-6 text-end">
+                <a asp-controller="Subjects" asp-action="AddSubject" class="btn btn-secondary">
+                    <i class="bi bi-plus-circle"></i> Add New Subject
+                </a>
+            </div>
+        </div>
+
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Subject Code</th>
+                    <th>Description</th>
+                    <th>Category</th>
+                    <th>Units</th>
+                    <th>Course Code</th>
+                    <th>Curriculum Year</th>
+                    <th>Offering</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var subject in Model)
+                {
+                    <tr>
+                        <td>@subject.SubjectCode</td>
+                        <td>@subject.Description</td>
+                        <td>@subject.Category</td>
+                        <td>@subject.Units</td>
+                        <td>@subject.CourseCode</td>
+                        <td>@subject.CurriculumYear</td>
+                        <td>@subject.Offering</td>
+
+                        <td>
+                            <div class="w-75 btn-group" role="group">
+                                <a asp-controller="Subjects" asp-action="Edit" asp-route-studentId="@subject.SubjectCode"
+                                   class="btn btn-success mx-2">
+                                    <i class="bi bi-pencil-square"></i> Edit
+                                </a>
+                                <a asp-controller="Subjects" asp-action="Delete" asp-route-studentId="@subject.SubjectCode"
+                                   class="btn btn-danger mx-2">
+                                    <i class="bi bi-trash-fill"></i> Delete
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
