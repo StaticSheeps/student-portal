@@ -31,7 +31,6 @@ namespace StudentPortal.Web.Controllers
             _db.Students.Add(student);
             _db.SaveChanges();
             return RedirectToAction("List");
-
         }
 
         public IActionResult Edit(int studentId)
@@ -58,6 +57,7 @@ namespace StudentPortal.Web.Controllers
             return View();
 
         }
+
         public IActionResult Delete(int studentId)
         {
             Student? studentFromDb = _db.Students.FirstOrDefault(u => u.Id == studentId);
@@ -81,7 +81,6 @@ namespace StudentPortal.Web.Controllers
             }
             TempData["error"] = "The student could not be deleted successfully";
             return View();
-
         }
     }
 }
